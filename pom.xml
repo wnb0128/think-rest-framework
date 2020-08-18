@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.3.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.think</groupId>
+    <artifactId>think-rest-framework</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>think-rest-framework</name>
+    <packaging>pom</packaging>
+    <description>基于微服务Spring Cloud快速开发脚手架</description>
+
+    <properties>
+        <file.encoding>UTF-8</file.encoding>
+        <build.encoding>UTF-8</build.encoding>
+        <!-- 本地JDK版本号相关 -->
+        <jdk.version>1.8</jdk.version>
+        <spring-cloud.version>Hoxton.SR7</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
+        <lombok.version>1.18.10</lombok.version>
+    </properties>
+
+    <modules>
+        <module>rest-admin-registry</module>
+        <module>rest-admin-config</module>
+        <module>rest-admin-gateway-server</module>
+        <module>rest-admin-feign</module>
+        <module>rest-admin-swagger2</module>
+        <module>rest-admin-common</module>
+        <module>rest-admin-redis</module>
+        <module>rest-admin-office</module>
+        <module>rest-admin-mybatis</module>
+        <module>rest-admin-datasource</module>
+        <module>rest-admin-exception</module>
+        <module>rest-admin-elasticsearch</module>
+        <module>rest-admin-kafka</module>
+        <module>rest-admin-dfs</module>
+    </modules>
+
+    <dependencies>
+        <!--lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>rep</id>
+            <repositories>
+                <repository>
+                    <id>ali</id>
+                    <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+                </repository>
+                <repository>
+                    <id>spring.release</id>
+                    <name>Spring GA Repository</name>
+                    <url>http://repo.spring.io/release</url>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                    <include>**/*.json</include>
+                    <include>**/*.string</include>
+                    <include>**/*.xls</include>
+                    <include>**/*.sh</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.yml</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <encoding>${build.encoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Cloud依赖 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--spring cloud alibaba-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>
