@@ -78,7 +78,7 @@
 
     <profiles>
         <profile>
-            <id>rep</id>
+            <id>repository</id>
             <repositories>
                 <repository>
                     <id>ali</id>
@@ -91,7 +91,23 @@
                 </repository>
             </repositories>
         </profile>
+        <!--<profile>
+            <id>nexus</id>
+            <distributionManagement>
+                <repository>
+                    <id>nexus-releases</id>
+                    <name>Releases</name>
+                    <url>http://localhost:9001/nexus/repository/maven-releases</url>
+                </repository>
+                <snapshotRepository>
+                    <id>nexus-snapshot</id>
+                    <name>Snapshot</name>
+                    <url>http://localhost:9001/nexus/repository/maven-snapshots</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>-->
     </profiles>
+
 
     <build>
         <resources>

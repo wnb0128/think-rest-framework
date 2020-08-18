@@ -16,16 +16,14 @@ import java.net.URLEncoder;
 
 /**
  * @author ：thinkwang
- * @description：生成短链接
+ * @description：访问百度短链接生成短链接
  * @date ：Created in 2019/5/28 17:28
  * @version: V1.0.0
  */
 public class ShortNetUtils {
     private static Logger log = LoggerFactory.getLogger(ShortNetUtils.class);
-
     public static int TIMEOUT = 30 * 1000;
     public static String ENCODING = "UTF-8";
-
 
     /**
      * 根据传入的url，通过访问百度短链接的接口， 将其转换成短的URL
@@ -36,7 +34,6 @@ public class ShortNetUtils {
     public static String getShortURL(String originURL) {
         String tinyUrl = null;
         try {
-
             // 指定百度短链接的接口
             URL url = new URL("http://www.mynb8.com/api2/dwz");
             // 建立连接
@@ -63,11 +60,10 @@ public class ShortNetUtils {
             // 关闭链接
             connection.disconnect();
         } catch (IOException e) {
-            log.error("getshortURL error:" + e.toString());
+            log.error("getShortURL error:" + e.toString());
         }
         return tinyUrl;
     }
-
 
     /**
      * 通过HttpConnection 获取返回的字符串
@@ -115,11 +111,7 @@ public class ShortNetUtils {
         } catch (JsonProcessingException e) {
             log.error("getValueByKey error:" + e.toString());
             e.printStackTrace();
-        } catch (IOException e) {
-            log.error("getValueByKey error:" + e.toString());
         }
-
-
         return targetValue;
     }
 
