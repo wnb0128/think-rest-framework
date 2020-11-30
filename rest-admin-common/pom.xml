@@ -20,7 +20,7 @@
         <commons.codec.version>1.10</commons.codec.version>
         <commons.lang3.version>3.9</commons.lang3.version>
         <commons.collections4.version>4.3</commons.collections4.version>
-        <fastjson.version>1.2.9</fastjson.version>
+        <fastjson.version>1.2.31</fastjson.version>
     </properties>
 
     <dependencies>
