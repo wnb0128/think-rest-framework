@@ -42,6 +42,7 @@
         <module>rest-admin-dfs</module>
         <module>rest-admin-email</module>
         <module>rest-admin-sms</module>
+        <module>rest-admin-ai</module>
     </modules>
 
     <dependencies>
