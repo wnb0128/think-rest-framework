@@ -40,6 +40,7 @@
         <module>rest-admin-elasticsearch</module>
         <module>rest-admin-kafka</module>
         <module>rest-admin-dfs</module>
+        <module>rest-admin-email</module>
     </modules>
 
     <dependencies>
