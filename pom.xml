@@ -43,6 +43,7 @@
         <module>rest-admin-email</module>
         <module>rest-admin-sms</module>
         <module>rest-admin-ai</module>
+        <module>rest-admin-security</module>
     </modules>
 
     <dependencies>
