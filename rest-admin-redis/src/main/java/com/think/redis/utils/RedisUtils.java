@@ -6,6 +6,7 @@ import org.springframework.data.geo.*;
 import org.springframework.data.redis.connection.RedisGeoCommands;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.script.RedisScript;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import redis.clients.jedis.Jedis;
@@ -737,6 +738,29 @@ public class RedisUtils {
         Boolean present = redisTemplate.opsForValue().setIfPresent(key, value, seconds, TimeUnit.SECONDS);
         return present;
     }
+
+    /**
+     * setIfAbsent
+     * @param key
+     * @param value
+     * @param timeOut
+     * @return
+     */
+    public boolean setIfAbsent(String key, Object value, long timeOut){
+        return redisTemplate.opsForValue().setIfAbsent(key, value, timeOut, TimeUnit.SECONDS);
+    }
+
+    /**
+     * lua脚本执行
+     * @param redisScript
+     * @param lockKey
+     * @param value
+     * @return
+     */
+    public Object execute(RedisScript<Long> redisScript, String lockKey, String value){
+        return redisTemplate.execute(redisScript, Collections.singletonList(lockKey), value);
+    }
+
 
     /**
      * 添加指令：geoadd 指令携带集合名称以及多个经纬度名称三元组，注意这里可以加入多个三元组
